@@ -102,6 +102,12 @@ func Validate(c *gin.Context) {
 	})
 }
 
+func Welcome(c *gin.Context) {
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Hello World!",
+	})
+}
+
 func GeneratePass(c *gin.Context) {
 	var body struct {
 		TeamIdentifier     string
