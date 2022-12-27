@@ -1,4 +1,4 @@
-module kettkal
+module github.com/ksaduakasov/gorm-heroku
 
 go 1.19
 
