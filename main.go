@@ -5,6 +5,7 @@ import (
 	"kettkal/controllers"
 	"kettkal/inits"
 	"kettkal/middleware"
+	"os"
 )
 
 func init() {
@@ -14,11 +15,12 @@ func init() {
 }
 
 func main() {
-	r := gin.Default()
+	port := os.Getenv("PORT")
+	r := gin.New()
 	r.GET("/", controllers.Welcome)
 	r.POST("/signup", controllers.SignUp)
 	r.POST("/login", controllers.Login)
 	r.POST("/validate", middleware.RequireAuth, controllers.Validate)
 	r.POST("/generatePass", middleware.RequireAuth, controllers.GeneratePass)
-	r.Run() // listen and serve on 0.0.0.0:8080
+	r.Run(":" + port) // listen and serve on 0.0.0.0:8080
 }
